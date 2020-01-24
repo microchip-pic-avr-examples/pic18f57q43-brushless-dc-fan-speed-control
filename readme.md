@@ -10,7 +10,7 @@ Each of the three fans used in this project has four wires:
 - Tachometer output (Blue wire)
 
 ### Four Wire Fan:
-![four wire fan](../assets/FourWireFan.png)
+![four wire fan](images/FourWireFan.png)
 
 The positive and ground wires are all tied together and connected to a 5V DC power supply, while each individual fan’s tachometer and PWM wire must be connected to microcontroller I/O pins. For testing and verification purposes, an oscilloscope may be connected to the tachometer and PWM wires.
 
@@ -28,10 +28,10 @@ The fan signals, temperature sensor, UART, and microcontroller pin connections a
 |UART TX       | RC6                |
 
 ### Curiosity Nano Development Board and Nano Base Board:
-![nano boards](../assets/NanoAdapter.jpg)
+![nano boards](images/NanoAdapter.jpg)
 
 ### Complete Project Setup:
-![complete project](../assets/FanProjectImage.jpg)
+![complete project](images/FanProjectImage.jpg)
 
 # Project Software Configuration:
 The project software was developed in MPLAB X with the help of the MPLAB Code Configurator (MCC) plug-in tool. The MCC tool provides a user-friendly interface that generates software based on the user’s parameters. MCC allows developers who may not be familiar with a new peripheral a way to quickly set up and test a peripheral without having to dive deep into the device datasheet. For this project, the MCC tool was used to generate code for the PWM, CCP, ADCC, and UART modules.
@@ -40,7 +40,7 @@ The project software was developed in MPLAB X with the help of the MPLAB Code Co
 The PWM module was configured such that the PWM frequency is 25 kHz, which matches the fan’s nominal PWM input frequency. The PWM duty cycle was selected as 50%, which will drive the fans on initial power-up to roughly half of the fan’s total speed. These options, along with PWM mode, clock, and interrupt selections, are easy to configure in the PWM Editor as seen in the figure below.
 
 ### MCC PWM Editor Window:
-![PWM mcc](../assets/PWMMCCImage.png)
+![PWM mcc](images/PWMMCCImage.png)
 
 ```c
 void PWM1_Initialize(void)
@@ -67,7 +67,7 @@ void PWM1_Initialize(void)
 The CCP module was configured to capture the Timer1 count value every fourth rising edge of the fans’ tachometer signal. This allows the module to measure each fan’s rotational speed, and compare the actual measured speed to the expected speed. MCC’s CCP Editor window is used to select the CCP’s timer source, mode, interrupts, and input pin.
 
 ### MCC CCP Editor Window:
-![CCP mcc](../assets/CCPMCCImage.png)
+![CCP mcc](images/CCPMCCImage.png)
 
 ```c
 void CCP1_Initialize(void)
@@ -86,7 +86,7 @@ void CCP1_Initialize(void)
 The ADCC is used to measure the temperature sensor’s output voltage. The ADCC is configured in Burst-Average mode, which allows the ADC hardware to sample the analog input a selectable number of times before calculating the input’s average. This helps prevent fan speed fluctuations, which may produce unwanted noise as the fan constantly adjusted its speed based on the temperature. Additionally, once the temperature is calculated, the ADCC compares the temperature value to user-set threshold values. For this project, the threshold values represent temperature sensor failure conditions, such as an open-circuit or short-circuit condition.
 
 ### MCC ADCC Editor window:
-![ADCC mcc](../assets/ADCCMCCImage.png)
+![ADCC mcc](images/ADCCMCCImage.png)
 
 ```c
 void ADCC_Initialize(void)
@@ -120,7 +120,7 @@ void ADCC_Initialize(void)
 The UART is used to transmit the fan speed and temperature data to a PC terminal program, such as Tera Term, for viewing. For this project, MCC was used to configure the UART for transmit only operation at a baud rate of 9600 bits per second. Additionally, the UART editor offers a selection for the use of the ‘printf’ library. The ‘printf’ library allows the user to write a string of characters to be transmitted with only one command, rather than loading the UART transmit register several times in user software.
 
 MCC UART Editor Window:
-![UART mcc](../assets/UARTMCCImage.png)
+![UART mcc](images/UARTMCCImage.png)
 
 ```c
 void UART1_Initialize(void)
@@ -148,7 +148,7 @@ MCC can be used to configure basic system parameters, such as oscillator selecti
 Once all project parameters have been configured, simply press the ‘Generate’ button, and MCC will generate the drivers based on user inputs.
 
 ### Generate Button:
-![Generate mcc](../assets/MCCGenerateButton.png)
+![Generate mcc](images/MCCGenerateButton.png)
 
 # Conclusion:
-The ‘pic18f57q43-curiosity-nano-pwm-fan-control’ project uses the PIC18F57Q43 microcontroller’s 16-bit PWM, CCP, ADCC, and UART modules to provide speed control to a set of BLDC fans. The ADCC module reads a temperature sensor whose value is used to determine fan speed via the 16-bit PWM module. The CCP module monitors each fan’s tachometer output to ensure the fans are operating at the correct speed. The UART module transmits fan speed and temperature data to a PC terminal program for viewing. 
+The ‘pic18f57q43-curiosity-nano-pwm-fan-control’ project uses the PIC18F57Q43 microcontroller’s 16-bit PWM, CCP, ADCC, and UART modules to provide speed control to a set of BLDC fans. The ADCC module reads a temperature sensor whose value is used to determine fan speed via the 16-bit PWM module. The CCP module monitors each fan’s tachometer output to ensure the fans are operating at the correct speed. The UART module transmits fan speed and temperature data to a PC terminal program for viewing.
