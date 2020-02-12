@@ -1,5 +1,5 @@
 # Objective:
-The “pic18f57q43_curiosity_nano_pwm_fan_control” project highlights the use of the PIC18F57Q43 family’s new 16-bit PWM module to control three Brushless DC (BLDC) fans. The onboard 12-bit Analog-to-Digital Converter with Computation (ADCC) is used to measure a temperature sensor, whose temperature is used to determine the proper fan speeds. To ensure the fans are operating at the correct speed, the Capture/Compare/PWM (CCP) module captures each fan’s tachometer signal. Software computes and compares the actual fan speeds read by the CCP and adjusts the PWM output to correct any speed variations. Finally, fan speed and temperature information are transmitted to a PC terminal program using the Universal Asynchronous Receiver Transmitter (UART) module.
+The “pic18f57q43_curiosity_nano_pwm_fan_control” project highlights the use of the PIC18-Q43 family’s new 16-bit PWM module to control three Brushless DC (BLDC) fans. The onboard 12-bit Analog-to-Digital Converter with Computation (ADCC) is used to measure a temperature sensor, whose temperature is used to determine the proper fan speeds. To ensure the fans are operating at the correct speed, the Capture/Compare/PWM (CCP) module captures each fan’s tachometer signal. Software computes and compares the actual fan speeds read by the CCP and adjusts the PWM output to correct any speed variations. Finally, fan speed and temperature information are transmitted to a PC terminal program using the Universal Asynchronous Receiver Transmitter (UART) module.
 
 # Demo Configuration:
 The Curiosity Nano Development Board (DM164150) is used in conjunction with the Curiosity Nano Base for Click Boards (AC164162) as the development platform. The Nano Base board has three MikroElektronika Click board slots, several types of power connections, voltage regulation circuitry, and a header mount for the Nano Development board. For this project the Nano Base board was used as a circuit interface, connecting each of the three fans’ PWM and tachometer signals, as well as the temperature sensor and UART signals, to the microcontroller via header pins.
@@ -148,7 +148,7 @@ MCC can be used to configure basic system parameters, such as oscillator selecti
 Once all project parameters have been configured, simply press the ‘Generate’ button, and MCC will generate the drivers based on user inputs.
 
 ### Generate Button:
-![Generate mcc](images/MCCGenerateButton.png)
+![Generate mcc](images/GenerateButton.png)
 
 # Conclusion:
 The ‘pic18f57q43-curiosity-nano-pwm-fan-control’ project uses the PIC18F57Q43 microcontroller’s 16-bit PWM, CCP, ADCC, and UART modules to provide speed control to a set of BLDC fans. The ADCC module reads a temperature sensor whose value is used to determine fan speed via the 16-bit PWM module. The CCP module monitors each fan’s tachometer output to ensure the fans are operating at the correct speed. The UART module transmits fan speed and temperature data to a PC terminal program for viewing.
