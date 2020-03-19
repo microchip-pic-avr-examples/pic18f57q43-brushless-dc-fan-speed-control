@@ -1,3 +1,7 @@
+# Related Documentation
+
+This project is related to [AN3381](http://ww1.microchip.com/downloads/en/Appnotes/00003381A.pdf):  Brushless DC Fan Speed Control Using Temperature Input and Tachometer Feedback. Refer the application note for more details.
+
 # Objective:
 The “pic18f57q43_curiosity_nano_pwm_fan_control” project highlights the use of the PIC18-Q43 family’s new 16-bit PWM module to control three Brushless DC (BLDC) fans. The onboard 12-bit Analog-to-Digital Converter with Computation (ADCC) is used to measure a temperature sensor, whose temperature is used to determine the proper fan speeds. To ensure the fans are operating at the correct speed, the Capture/Compare/PWM (CCP) module captures each fan’s tachometer signal. Software computes and compares the actual fan speeds read by the CCP and adjusts the PWM output to correct any speed variations. Finally, fan speed and temperature information are transmitted to a PC terminal program using the Universal Asynchronous Receiver Transmitter (UART) module.
 
